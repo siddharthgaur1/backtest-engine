@@ -1,0 +1,13 @@
+[project]
+name = "backtest-engine"
+version = "0.1.0"
+description = "Event-driven backtester with strict no-lookahead enforcement and Indian market transaction costs."
+requires-python = ">=3.10"
+dependencies = ["pandas>=2.0", "numpy>=1.24"]
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["backtest_engine*"]
