@@ -11,10 +11,10 @@ from pathlib import Path
 NIFTY_FORECASTER_PATH = Path(__file__).resolve().parents[2] / "nifty-forecaster"
 sys.path.insert(0, str(NIFTY_FORECASTER_PATH))
 
-from features.engineer import engineer_features  # noqa: E402
-from models.ensemble import EnsembleModel  # noqa: E402
+from features.engineer import engineer_features
+from models.ensemble import EnsembleModel
 
-from backtest_engine import Backtest, MLSignalStrategy  # noqa: E402
+from backtest_engine import Backtest, MLSignalStrategy
 
 
 def load_model(ticker: str) -> EnsembleModel:
