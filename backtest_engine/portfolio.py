@@ -1,6 +1,12 @@
 from __future__ import annotations
 
-from backtest_engine.events import Direction, FillEvent, OrderEvent, OrderType, SignalEvent
+from backtest_engine.events import (
+    Direction,
+    FillEvent,
+    OrderEvent,
+    OrderType,
+    SignalEvent,
+)
 
 
 class Portfolio:
