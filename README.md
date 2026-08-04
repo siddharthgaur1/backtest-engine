@@ -14,6 +14,18 @@ only ever sees `data.get_latest_bars(symbol, n)`, which is hard-truncated at
 the current bar, and every order fills at the **next** bar's open — never the
 current bar's close. See `tests/test_no_lookahead.py::test_fill_happens_at_next_bar_open_not_current_close`.
 
+## Architecture
+
+`HistoricalDataHandler` streams bars in chronological order and emits
+`MarketEvent`s; a `Strategy` (e.g. `MomentumStrategy`) consumes only
+`data.get_latest_bars(symbol, n)` — hard-truncated at the current bar — and
+emits `SignalEvent`s. `Portfolio` sizes and turns those into `OrderEvent`s,
+which `SimulatedBroker` fills at the **next** bar's open, applying Indian
+transaction costs (below), and emits `FillEvent`s back to `Portfolio` for
+bookkeeping. This event queue (`MarketEvent`→`SignalEvent`→`OrderEvent`→`FillEvent`)
+is what makes look-ahead structurally impossible — see "Why event-driven,
+not vectorized" below.
+
 ## Quickstart
 
 ```python
