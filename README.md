@@ -64,7 +64,14 @@ frame nifty-forecaster trains on, and `EnsembleModel.load()` needs a matching
 artifact under `models/artifacts/`. Wire it up when you have a specific
 ticker's trained artifact to test against.
 
-## What's here vs. the original spec
+## Results
+
+The synthetic quickstart output above (momentum vs buy-and-hold, seeded and
+reproducible via `python examples/momentum_vs_buyhold.py`) is the only
+measured result in this repo. There is no real-market benchmark yet — see
+Limitations.
+
+## Limitations
 
 Built: event loop (`MarketEvent`→`SignalEvent`→`OrderEvent`→`FillEvent`),
 `HistoricalDataHandler`, `SimulatedBroker` (next-bar-open fills, Indian
@@ -72,7 +79,7 @@ costs), `Portfolio` (fixed-fraction sizing), `MomentumStrategy` +
 `MLSignalStrategy`, core metrics (Sharpe/Sortino/CAGR/max drawdown/Calmar),
 no-lookahead tests.
 
-Skipped for this pass — add if actually needed:
+What's not here — add if actually needed:
 - Mean-reversion / pairs-trading strategies, position-sizing variants (ATR, Kelly)
 - Walk-forward optimization, Monte Carlo resampling, parameter grid search
 - HTML tearsheet, CLI, multi-page report — `result["metrics"]`/`result["trades"]` cover the numbers today
