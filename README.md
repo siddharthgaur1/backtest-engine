@@ -1,5 +1,10 @@
 # backtest-engine
 
+
+![Terminal recording: momentum vs buy-and-hold on seeded synthetic data, showing total return, Sharpe, max drawdown and trade count after Indian transaction costs](docs/demo.svg)
+
+<sub>Real output — regenerate with `python examples/render_demo_svg.py`. These are the same numbers as the Results section.</sub>
+
 Event-driven backtester for ML trading signals. Every bar is processed
 sequentially, as if time is moving forward — no vectorized shortcut can leak
 future data into a decision.
